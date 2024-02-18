@@ -1,0 +1,103 @@
+SETUP - Docker:
+
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+sudo apt install docker-ce -y
+
+---
+
+PULL - Download and Images:
+- docker pull Images
+
+Run - Start a Container:
+- docker run -d -p 80:80 nginx
+
+COPY - Index.html
+- docker cp index.html container_name:/usr/share/nginx/html
+
+PS - List Containers:
+- docker ps 
+- docker ps -a
+
+STOP - stop a container:
+- docker stop container_name
+
+RM - Remove a container:
+- docker rm container_name
+
+IMAGES - List Images:
+- docker images
+
+RMI - Remove Images:
+- docker rmi nginx
+
+Append a Command:
+- docker run ubuntu sleep 5
+- docker ps 
+- docker ps -a
+
+Exec - Execute a Command:
+- docker exec container_name /etc/hosts
+
+RUN - Attach and Detach
+- docker run nginx
+- docker run -d nginx
+
+- docker attach container_id
+
+RUN - PORT Mapping:
+
+- docker run -p 80:80 nginx
+
+RUN - Volume Mapping:
+
+- docker run -v /opt/mysql:/usr/share/nginx/html -p 80:80 -d nginx
+
+Inspect Container:
+
+- docker inspect container_name
+
+Container Logs:
+- docker logs container_name
+
+DockerFile:
+----
+
+Instruction --> Argument
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1        1) DOTNET - Image
+WORKDIR /app									  2) Create DIR	
+COPY . . 										  3) Copy files 	
+ENV ASPNETCORE_URLS http://*:5000				  4) Setup ENV variables	
+EXPOSE 5000										  5) EXPOSE Port 5000	
+ENTRYPOINT ["dotnet", "azure-devops-webapp.dll"]  6) Run Web App with DOTNET command
+
+- docker build Dockerfile –t dotnet-webapp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
